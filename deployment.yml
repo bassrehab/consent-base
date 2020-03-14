@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: consent-base-app
-          image: gcr.io/consent-management-271121/consent-base-app:1.0
+          image: gcr.io/consent-management-<PROJECT_ID>/consent-base-app:1.0
           imagePullPolicy: IfNotPresent
           env:
             - name: MONGODB_HOST
