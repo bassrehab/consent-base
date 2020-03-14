@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: consent-base-service
+  labels:
+    app: consent-base-service
+spec:
+  ports:
+    - name: http
+      port: 8000
+  selector:
+    app: consent-base-service
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: consent-base-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: consent-base-service
+        version: v1
+    spec:
+      containers:
+        - name: consent-base-app
+          image: gcr.io/consent-management-271121/consent-base-app:1.0
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: MONGODB_HOST
+              value: mongodb
+          ports:
+            - containerPort: 8000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 5
