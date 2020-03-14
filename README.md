@@ -1,12 +1,13 @@
 Consent Management Base
 =======================
 
-###About
+About
+-----
 Sample base application for Consent Management, that uses Spring Boot, MongoDB, Kubernetes and Istio.
 
 
-###How to run
-
+How to run
+----------
 1. Create Google Cloud Project, Note down the _<PROJECT_ID>_
 2. Create Google Kubernetes Cluster, with Istio Support. Note down _<CLUSTER_NAME>, <CLUSTER_ZONE>_
 3. Initialize Project
@@ -16,10 +17,9 @@ Sample base application for Consent Management, that uses Spring Boot, MongoDB, 
 5. Give yourself admin access
 `kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=$(gcloud config get-value core/account)`
 6. Optional 
-Check Istio Services are Up.
-`kubectl get services --all-namespaces`
-Check the running pods.
+Check the running pods & Istio Services are Up.
 `kubectl get pods --all-namespaces`
+`kubectl get services --all-namespaces`
 
 7. Clone Repository
 `git clone https://github.com/bassrehab/consent-base.git`
@@ -60,6 +60,13 @@ Check the running pods.
  19. For local deployments/tests:
  `gradle bootRun`
  
+ 
+ Next
+ ----
+ - Setup Auto Scaling
+ - Terraform Deployments
+ - Chef Integrations
+ - SSL/OAuth2 support
  
  
  
